@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.asistencia.control.AsistenciaController">
+   <children>
+      <TextField fx:id="txtNum1" layoutX="53.0" layoutY="27.0" />
+      <TextField fx:id="txtNum2" layoutX="251.0" layoutY="27.0" />
+      <Button fx:id="btnSumar" layoutX="425.0" layoutY="27.0" mnemonicParsing="false" onAction="#sumar" text="Button" />
+      <Label fx:id="result" layoutX="100.0" layoutY="108.0" text="Label" />
+   </children>
+</AnchorPane>
