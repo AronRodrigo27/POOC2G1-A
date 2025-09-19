@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane fx:id="bp" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.asistencia.control.MainguiController">
+    <top>
+        <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
+            <menus>
+                <Menu fx:id="menu1" mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem fx:id="menuItem1" mnemonicParsing="false" text="Asistencia" />
+                        <MenuItem fx:id="menuItem2" mnemonicParsing="false" text="Adm. Participante" />
+                        <MenuItem fx:id="menuItemC" mnemonicParsing="false" text="Salir" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+
+    <left>
+        <VBox spacing="10" style="-fx-padding: 10; -fx-background-color: #f0f0f0;">
+            <Label text="Módulos" style="-fx-font-weight: bold; -fx-padding: 5 0 10 0;"/>
+            <Button text="Usuarios" onAction="#handleUsuariosButton" maxWidth="Infinity" style="-fx-background-color: #4682B4; -fx-text-fill: white;"/>
+            <Button text="Productos" onAction="#handleProductosButton" maxWidth="Infinity" style="-fx-background-color: #3CB371; -fx-text-fill: white;"/>
+        </VBox>
+    </left>
+
+    <center>
+        <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab text="Inicio">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <Label text="Bienvenido al Sistema de Gestión" layoutX="50" layoutY="50" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>
