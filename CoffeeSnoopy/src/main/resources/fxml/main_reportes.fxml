@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+
+<BorderPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="pe.edu.upeu.CafeSnoopy.control.ReportesController">
+
+    <top>
+        <VBox spacing="15" style="-fx-padding: 20; -fx-background-color: #2c3e50;">
+            <Label text="📊 SISTEMA DE REPORTES AVANZADO"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <!-- COMBOBOX CORREGIDO -->
+                <ComboBox fx:id="comboTipoReporte" promptText="📈 Tipo de Reporte" prefWidth="200" style="-fx-font-size: 14px;"/>
+
+                <DatePicker promptText="📅 Fecha Inicio" prefWidth="150"/>
+                <DatePicker promptText="📅 Fecha Fin" prefWidth="150"/>
+
+                <Button text="🔍 Generar Reporte"
+                        style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20; -fx-font-weight: bold;"/>
+
+                <Button text="📄 Exportar PDF"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20;"/>
+
+                <Button text="💾 Exportar Excel"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20;"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+            <!-- Pestaña 1: Dashboard Principal -->
+            <Tab text="🏠 Dashboard">
+                <content>
+                    <ScrollPane fitToWidth="true" fitToHeight="true">
+                        <VBox spacing="20" style="-fx-padding: 20;">
+                            <!-- Tarjetas de Métricas Rápidas -->
+                            <HBox spacing="20" alignment="CENTER">
+                                <VBox spacing="10" style="-fx-padding: 20; -fx-background-color: #e8f6f3; -fx-background-radius: 15; -fx-pref-width: 200;">
+                                    <Label text="💰 Ventas Hoy" style="-fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
+                                    <Label text="S/ 1,845.00" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+                                    <Label text="↑ 12% vs ayer" style="-fx-font-size: 12px; -fx-text-fill: #27ae60;"/>
+                                </VBox>
+
+                                <VBox spacing="10" style="-fx-padding: 20; -fx-background-color: #fef9e7; -fx-background-radius: 15; -fx-pref-width: 200;">
+                                    <Label text="👥 Clientes Atendidos" style="-fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
+                                    <Label text="67" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #f39c12;"/>
+                                    <Label text="↑ 8% vs ayer" style="-fx-font-size: 12px; -fx-text-fill: #27ae60;"/>
+                                </VBox>
+
+                                <VBox spacing="10" style="-fx-padding: 20; -fx-background-color: #eaf2f8; -fx-background-radius: 15; -fx-pref-width: 200;">
+                                    <Label text="📦 Productos Vendidos" style="-fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
+                                    <Label text="189" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2980b9;"/>
+                                    <Label text="↑ 15% vs ayer" style="-fx-font-size: 12px; -fx-text-fill: #27ae60;"/>
+                                </VBox>
+
+                                <VBox spacing="10" style="-fx-padding: 20; -fx-background-color: #f4ecf7; -fx-background-radius: 15; -fx-pref-width: 200;">
+                                    <Label text="📊 Ticket Promedio" style="-fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
+                                    <Label text="S/ 27.54" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
+                                    <Label text="↑ 5% vs ayer" style="-fx-font-size: 12px; -fx-text-fill: #27ae60;"/>
+                                </VBox>
+                            </HBox>
+
+                            <!-- Gráficos Principales -->
+                            <HBox spacing="20">
+                                <VBox spacing="10" style="-fx-pref-width: 480;">
+                                    <Label text="📈 Ventas de la Semana" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                                    <BarChart fx:id="barChartVentas" prefHeight="300" prefWidth="480">
+                                        <xAxis>
+                                            <CategoryAxis label="Días" />
+                                        </xAxis>
+                                        <yAxis>
+                                            <NumberAxis label="Ventas (S/)" />
+                                        </yAxis>
+                                    </BarChart>
+                                </VBox>
+
+                                <VBox spacing="10" style="-fx-pref-width: 480;">
+                                    <Label text="🥧 Distribución por Categoría" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                                    <PieChart fx:id="pieChartCategorias" prefHeight="300" prefWidth="480"/>
+                                </VBox>
+                            </HBox>
+
+                            <!-- Tabla de Productos Más Vendidos -->
+                            <VBox spacing="10">
+                                <Label text="🔥 Productos Más Vendidos Hoy" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                                <TableView prefHeight="200">
+                                    <columns>
+                                        <TableColumn text="Producto" prefWidth="200"/>
+                                        <TableColumn text="Categoría" prefWidth="150"/>
+                                        <TableColumn text="Cantidad" prefWidth="100"/>
+                                        <TableColumn text="Total Vendido" prefWidth="150"/>
+                                    </columns>
+                                </TableView>
+                            </VBox>
+                        </VBox>
+                    </ScrollPane>
+                </content>
+            </Tab>
+
+            <!-- Pestaña 2: Reportes Detallados -->
+            <Tab text="📋 Reportes Detallados">
+                <content>
+                    <VBox spacing="15" style="-fx-padding: 20;">
+                        <Label text="📑 Reporte de Ventas Detallado" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+                        <TableView prefHeight="400">
+                            <columns>
+                                <TableColumn text="Fecha" prefWidth="100"/>
+                                <TableColumn text="Hora" prefWidth="80"/>
+                                <TableColumn text="N° Venta" prefWidth="80"/>
+                                <TableColumn text="Cliente" prefWidth="150"/>
+                                <TableColumn text="Productos" prefWidth="200"/>
+                                <TableColumn text="Total" prefWidth="100"/>
+                                <TableColumn text="Vendedor" prefWidth="120"/>
+                                <TableColumn text="Estado" prefWidth="80"/>
+                            </columns>
+                        </TableView>
+
+                        <!-- Resumen -->
+                        <HBox spacing="30" alignment="CENTER" style="-fx-padding: 20; -fx-background-color: #ecf0f1; -fx-background-radius: 10;">
+                            <VBox spacing="5" alignment="CENTER">
+                                <Label text="TOTAL PERÍODO" style="-fx-font-weight: bold;"/>
+                                <Label text="S/ 15,847.00" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+                            </VBox>
+                            <VBox spacing="5" alignment="CENTER">
+                                <Label text="VENTAS TOTALES" style="-fx-font-weight: bold;"/>
+                                <Label text="576" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #3498db;"/>
+                            </VBox>
+                            <VBox spacing="5" alignment="CENTER">
+                                <Label text="PRODUCTOS VENDIDOS" style="-fx-font-weight: bold;"/>
+                                <Label text="2,145" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #e67e22;"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </content>
+            </Tab>
+
+            <!-- Pestaña 3: Análisis -->
+            <Tab text="🔍 Análisis">
+                <content>
+                    <ScrollPane fitToWidth="true" fitToHeight="true">
+                        <VBox spacing="20" style="-fx-padding: 20;">
+                            <Label text="📊 Análisis de Tendencia Mensual" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+                            <LineChart fx:id="lineChartTendencia" prefHeight="300" prefWidth="900">
+                                <xAxis>
+                                    <CategoryAxis label="Meses" />
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis label="Ventas (S/)" />
+                                </yAxis>
+                            </LineChart>
+
+                            <HBox spacing="20">
+                                <VBox spacing="15" style="-fx-padding: 20; -fx-background-color: #f8f9fa; -fx-background-radius: 10; -fx-pref-width: 430;">
+                                    <Label text="🎯 Métricas de Desempeño" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                                    <Label text="• Horario Pico: 12:00 - 14:00"/>
+                                    <Label text="• Producto Estrella: Café Americano"/>
+                                    <Label text="• Vendedor Destacado: María González"/>
+                                    <Label text="• Categoría Más Rentable: Bebidas Calientes"/>
+                                </VBox>
+
+                                <VBox spacing="15" style="-fx-padding: 20; -fx-background-color: #f8f9fa; -fx-background-radius: 10; -fx-pref-width: 430;">
+                                    <Label text="📈 Recomendaciones" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                                    <Label text="• Incrementar stock de Café Americano"/>
+                                    <Label text="• Promocionar bebidas frías en horario tarde"/>
+                                    <Label text="• Capacitación en ventas cruzadas"/>
+                                    <Label text="• Optimizar horarios de personal"/>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                    </ScrollPane>
+                </content>
+            </Tab>
+        </TabPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="15" style="-fx-padding: 10; -fx-background-color: #34495e; -fx-alignment: CENTER_LEFT;">
+            <Label text="🟢 Sistema conectado" style="-fx-text-fill: white; -fx-font-size: 12px;"/>
+            <Separator orientation="VERTICAL" style="-fx-padding: 0 10;"/>
+            <Label text="📊 Última actualización: 12:45 PM" style="-fx-text-fill: white; -fx-font-size: 12px;"/>
+            <Separator orientation="VERTICAL" style="-fx-padding: 0 10;"/>
+            <Label text="👤 Usuario: Admin" style="-fx-text-fill: white; -fx-font-size: 12px;"/>
+            <Separator orientation="VERTICAL" style="-fx-padding: 0 10;"/>
+            <Label text="💾 Período: 01/01/2025 - 31/01/2025" style="-fx-text-fill: white; -fx-font-size: 12px;"/>
+        </HBox>
+    </bottom>
+</BorderPane>
