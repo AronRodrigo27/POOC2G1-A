@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+
+<BorderPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="pe.edu.upeu.CafeSnoopy.control.ReportesController">
+
+    <top>
+        <VBox spacing="15" style="-fx-padding: 20; -fx-background-color: #2c3e50;">
+            <Label text="📊 SISTEMA DE REPORTES AVANZADO"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <ComboBox fx:id="comboTipoReporte" promptText="📈 Tipo de Reporte" prefWidth="200" style="-fx-font-size: 14px;"/>
+
+                <DatePicker fx:id="dateInicio" promptText="📅 Fecha Inicio" prefWidth="150"/>
+                <DatePicker fx:id="dateFin" promptText="📅 Fecha Fin" prefWidth="150"/>
+
+                <Button text="🔍 Generar Reporte" onAction="#generarReporte"
+                        style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20; -fx-font-weight: bold;"/>
+
+                <Button text="📄 Exportar PDF" onAction="#exportarPDF"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20;"/>
+
+                <Button text="💾 Exportar Excel" onAction="#exportarExcel"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20;"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+            <Tab text="🏠 Dashboard">
+                <content>
+                    <ScrollPane fitToWidth="true" fitToHeight="true">
+                        <VBox spacing="20" style="-fx-padding: 20;">
+
+                            <HBox spacing="20">
+                                <VBox spacing="10" style="-fx-pref-width: 480;">
+                                    <Label text="📈 Ventas de la Semana" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                                    <BarChart fx:id="barChartVentas" prefHeight="300" prefWidth="480">
+                                        <xAxis>
+                                            <CategoryAxis label="Días" />
+                                        </xAxis>
+                                        <yAxis>
+                                            <NumberAxis label="Ventas (S/)" />
+                                        </yAxis>
+                                    </BarChart>
+                                </VBox>
+
+                                <VBox spacing="10" style="-fx-pref-width: 480;">
+                                    <Label text="🥧 Distribución por Categoría" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                                    <PieChart fx:id="pieChartCategorias" prefHeight="300" prefWidth="480"/>
+                                </VBox>
+                            </HBox>
+
+                            <VBox spacing="10">
+                                <Label text="📊 Tendencia de Ventas" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                                <LineChart fx:id="lineChartTendencia" prefHeight="300" prefWidth="900">
+                                    <xAxis>
+                                        <CategoryAxis label="Tiempo" />
+                                    </xAxis>
+                                    <yAxis>
+                                        <NumberAxis label="Ventas (S/)" />
+                                    </yAxis>
+                                </LineChart>
+                            </VBox>
+
+                        </VBox>
+                    </ScrollPane>
+                </content>
+            </Tab>
+
+            <Tab text="📋 Reportes Detallados">
+                <content>
+                    <VBox spacing="15" style="-fx-padding: 20;">
+                        <Label text="📑 Reporte de Ventas Detallado" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                        <TableView prefHeight="400">
+                            <columns>
+                                <TableColumn text="Fecha" prefWidth="100"/>
+                                <TableColumn text="N° Venta" prefWidth="80"/>
+                                <TableColumn text="Total" prefWidth="100"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </content>
+            </Tab>
+        </TabPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="15" style="-fx-padding: 10; -fx-background-color: #34495e; -fx-alignment: CENTER_LEFT;">
+            <Label text="🟢 Sistema de Reportes Conectado" style="-fx-text-fill: white; -fx-font-size: 12px;"/>
+            <Separator orientation="VERTICAL" style="-fx-padding: 0 10;"/>
+            <Label text="👤 Usuario: Admin" style="-fx-text-fill: white; -fx-font-size: 12px;"/>
+        </HBox>
+    </bottom>
+</BorderPane>
